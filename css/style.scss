@@ -1,0 +1,133 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(../images/home-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    position: relative;
+    z-index: 1;
+    .overlay{
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: -1;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+    }
+    .box{
+        width: 360px;
+        height: 480px;
+        padding: 50px;
+        border-radius: 5px;
+        overflow: hidden;
+        text-align: center;
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
+        box-shadow: 0 5px 35px rgba($color: #000000, $alpha: 0.4);
+        position: relative;
+        transition: transform 1s ease-in-out;
+        transform: translateY(-150%);
+        &.active{
+            transform: translateY(0);
+            img{
+                transform: translateX(0);
+            }
+            h2{
+                transform: translateX(0);
+            }
+            .inpBx{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            left: 5px;
+            right: 5px;
+            border-radius: 5px;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3)0%, rgba(255, 255, 255, 1)15%, transparent 50%, transparent 85%, rgba(255, 255, 255, 0.2)100%);
+        } 
+        img{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            transform: translateX(-270px);
+            transition: transform 1s ease-in-out 1s;
+        }
+        h2{
+            color: white;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            transform: translateX(270px);
+            transition: transform 1s ease-in-out 1s;
+        }
+        form{
+            .inpBx{
+                position: relative;
+                margin-bottom: 20px;
+                width: 100%;
+                transform: scale(0);
+                opacity: 0;
+                transition: transform 0.7s ease-in-out 1s;
+                input{
+                    width: 100%;
+                    border: 1px solid rgba($color: #ffffff, $alpha: 0.2);
+                    background: transparent;
+                    padding: 10px;
+                    padding-left: 35px;
+                    color: white;
+                    font-size: 16px;
+                    box-shadow: inset 0 0 25px rgba($color: #000000, $alpha: 0.3);
+                    &::placeholder{
+                        color: white;
+                        transition: opacity 0.7s ease-in-out;
+                    }
+                    &:focus::placeholder{
+                        opacity: 0;
+                    }
+                    &[type='submit']{
+                        max-width: 100px;
+                        text-align: center;
+                        background-color:  #c71830;
+                        box-shadow: none;
+                        border-radius: 3px;
+                        color: white;
+                        font-weight: 600;
+                        font-style: italic;
+                        padding: 10px;
+                        cursor: pointer;
+                        border: none;
+                    }
+                }
+                .icon{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 7px;
+                    filter: invert(0.1);
+                    color: white;
+                }
+            }
+        }
+    }
+}
